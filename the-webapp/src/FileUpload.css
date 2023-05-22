@@ -1,0 +1,11 @@
+.input {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border: 2px dashed #59CBE8;
+    height: 300px;
+    width: 500px;
+    border-radius: 7px;
+    background-color: transparent;
+}
