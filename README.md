@@ -19,3 +19,7 @@ I can also learn whether an applicant is considered him/her to be a good candida
 
 As a teacher, I could input a section of a textbook into OrbitAI and get it to generate a pop quiz I can use for my lessons the next day. I am able to use OrbitAI to aid me in creating lesson plans via semantic analysis. 
 
+## Features
+As of now, the features include a main page with a box that allows you to type in your questions, as well as file upload feature.
+
+In future milestones, we are planning to include button features for prompt engineering.
