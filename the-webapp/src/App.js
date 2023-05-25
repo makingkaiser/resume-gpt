@@ -1,13 +1,16 @@
 import './App.css';
-import GenerateButton from './GenerateButton';
+import SubmitUserQuery from './SubmitUserQuery';
 import FileUpload from './FileUpload';
 
 function App() {
+  const queryChangeHandler = (event) => {
+    console.log(event.target.value);}
+
   return (
     <div className="App">
       <FileUpload/>
-      <input type ="text" placeholder='Ask me anything'/>
-      <GenerateButton/>
+
+      <SubmitUserQuery/>
     </div>
   );
 }
