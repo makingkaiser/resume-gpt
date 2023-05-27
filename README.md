@@ -1,4 +1,28 @@
 # OrbitAI
+
+# Instructions on running the webapp
+(As of 27 May)
+first, install python dependencies
+go to the file path where the folder 'flask-server' is and start a virtual environment in the terminal
+for Mac, it was 'python3 -m venv venv'
+then, run 'pip install -r requirements.txt'
+to install all required dependencies
+next, set your openai API key with:
+ Windows : Run the following in the cmd prompt, replacing <yourkey> with your API key:
+
+setx OPENAI_API_KEY “<yourkey>”
+
+This will apply to future cmd prompt window, so you will need to open a new one to use that variable with curl. You can validate that this variable has been set by opening a new cmd prompt window and typing in 
+
+echo %OPENAI_API_KEY%
+
+then, download the csv file from "https://cdn.openai.com/API/examples/data/winter_olympics_2022.csv"
+and place it in the 'flask-server' folder. 
+
+then, navigate to the file path where the 'src' folder is and run 'npm install' in the terminal. 
+this will install the required dependencies. do not update them, but just try npm start, which should open up a localhost:3000 in your browser. 
+finally, navigate to the 'flask-server' path again and run 'flask run'.
+
 ## About the project
 What's the problem?
 
