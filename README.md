@@ -1,6 +1,14 @@
 
 # OrbitAI
 
+**Team ID**: 5778
+
+**Team Members**:
+Kaiser Cheng, Joy Foo
+
+**Level of Achievement**: Apollo 11
+
+
 # Instructions on running the webapp
 (As of 27 May)
 first, install python dependencies
@@ -23,15 +31,6 @@ and place it in the 'flask-server' folder.
 then, navigate to the file path where the 'src' folder is and run 'npm install' in the terminal. 
 this will install the required dependencies. do not update them, but just try npm start, which should open up a localhost:3000 in your browser. 
 finally, navigate to the 'flask-server' path again and run 'flask run'.
-
-## About the project
-What's the problem?
-**Team ID**: 5778
-
-**Team Members**:
-Kaiser Cheng, Joy Foo
-
-**Level of Achievement**: Apollo 11
 
 ## About the Project
 **What’s the problem?**
