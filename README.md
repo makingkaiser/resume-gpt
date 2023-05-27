@@ -98,5 +98,7 @@ Our *Project Log* can be found [here](https://docs.google.com/spreadsheets/d/1d6
 ## Tech-Stack
 
 For our project, we used: 
+* Python
+* Flask
 * React
 * OpenAI API
