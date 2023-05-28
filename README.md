@@ -32,7 +32,7 @@ This will apply to future CLI windows, so you will need to open a new one to use
 Then, download the csv file from "https://cdn.openai.com/API/examples/data/winter_olympics_2022.csv"
 and place it in the 'flask-server' folder. 
 
-Then, navigate to the file path where the 'src' folder is and run 'npm install' in the terminal. 
+Then, navigate to the file path where the 'src' folder is and run `npm install` in the terminal. 
 
 This will install the required dependencies. Do not update them, but just run `npm start`, which should open up a localhost:3000 in your browser. 
  
@@ -87,7 +87,7 @@ Our *Class Diagram* can be viewed [here.](https://drive.google.com/file/d/1QlvFj
 * An Input field for users to input questions
 * A Button that sends the user's input questions into the backend
 
-Our ***Technical Proof-of-Concept*** can be found [here.]()
+Our ***Technical Proof-of-Concept*** can be found [here](https://docs.google.com/document/d/1QA0hiq3B01C-MLfwHBFUVlUo8GxjuN346ZPz-yJGT60/edit?usp=sharing).
 
 
 ## Next up…
@@ -96,10 +96,10 @@ Some features for the next phases:
 * Prompt buttons to streamline the context of the Chatbot (ie prompt engineering)
 
 ## Project Flow and Timeline
-Our *Project Flow and Development Timeline* can be found [here.]()
+Our *Project Flow and Development Timeline* can be found [here](https://docs.google.com/document/d/1QA0hiq3B01C-MLfwHBFUVlUo8GxjuN346ZPz-yJGT60/edit?usp=sharing).
 
 ## Project Log
-Our *Project Log* can be found [here](https://docs.google.com/spreadsheets/d/1d6DxgpCpcmTk8kyhEtn4Vz9rUNKAplvYz1qOrUqlTsM/edit#gid=0)
+Our *Project Log* can be found [here](https://docs.google.com/document/d/1QA0hiq3B01C-MLfwHBFUVlUo8GxjuN346ZPz-yJGT60/edit?usp=sharing).
 
 ## Tech-Stack
 
