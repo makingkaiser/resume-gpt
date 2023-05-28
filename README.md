@@ -1,4 +1,5 @@
 
+
 # OrbitAI
 
 **Team ID**: 5778
@@ -13,30 +14,43 @@ Kaiser Cheng, Joy Foo
 (As of 27 May)
 
 First, install python dependencies.
+
+Next, start a virtual environment. This can be done in the following two ways:
+
+**Option 1**
+
 Go to the file path where the folder 'flask-server' is and start a virtual environment in the terminal.
 
 For Mac, run `python3 -m venv venv`, while for Windows, run `py -m venv venv` to create a virtual environment called `env`.
 
 Then, run `pip install -r requirements.txt` to install all required dependencies.
 
+**Option 2**
+
+Alternatively, on VS Code, open the requirements.txt file and click on 'Create Environment'. Choose to create a Venv, select the appropriate Python interpreter, and choose to install `requirements.txt`.
+
 Next, set your OpenAI API key:
 
- On Windows, run the following in the CLI, replacing <yourkey> with your API key:
+[Here](https://help.openai.com/en/articles/5112595-best-practices-for-api-key-safety) is one way to set your key as an environment variable. The following is what we did.
+
+Firstly, if you already have an OpenAI account, generate an API key (if you do not already have one). Next, on Windows, run the following in the CLI, replacing <yourkey> with your API key:
 
 `setx OPENAI_API_KEY <yourkey>`
 
-This will apply to future CLI windows, so you will need to open a new one to use that variable with curl. You can validate that this variable has been set by opening a new CLI window and typing in 
+This will apply to future CLI windows, so you will need to open a new one to use that variable with curl. You can validate that this variable has been set by opening a new CLI window and running
 
 `echo %OPENAI_API_KEY%`
 
-Then, download the csv file from "https://cdn.openai.com/API/examples/data/winter_olympics_2022.csv"
-and place it in the 'flask-server' folder. 
+Then, download [this csv file](https://cdn.openai.com/API/examples/data/winter_olympics_2022.csv) containing data on the 2022 winter Olympics
+and place it in the 'flask-server' folder. For now, our Webapp will only be able to answer questions about the 2022 Winterr Olympics.
 
-Then, navigate to the file path where the 'src' folder is and run `npm install` in the terminal. 
+Then, navigate to the file path where the 'src' folder is and run `npm install` in the terminal. This will install the required dependencies. 
 
-This will install the required dependencies. Do not update them, but just run `npm start`, which should open up a localhost:3000 in your browser. 
+Next, run `npm start`, which should open up a localhost:3000 in your browser. 
  
-Finally, navigate to the 'flask-server' path again and run `flask run`.
+Finally, navigate to the 'flask-server' path again and run `flask --app qnatest run`. This may take a while.
+
+When this is done, ask away!
 
 ## About the Project
 **What’s the problem?**
@@ -52,7 +66,7 @@ Our project aims to allow users to gain insights and meaningful answers to quest
 Everyone! Educators, students, researchers, office workers...anyone who wants quick answers to their multifarious questions can turn to OrbitAI, upload a document they have questions about, and ask away!
 
 ## Project Lift-Off Poster:
-Our *poster* can be viewed at [5778.png.](https://drive.google.com/file/d/16ImxMp8x71ir37Fwxc_jQWOkwGz-SRF_/view?usp=share_link) Made using Canva.
+Our *Poster* can be viewed at [5778.png.](https://drive.google.com/file/d/16ImxMp8x71ir37Fwxc_jQWOkwGz-SRF_/view?usp=share_link) Made using Canva.
 
 Our *Project Trailer* can be viewed at [5778.mp4.](https://drive.google.com/file/d/1Txf9ak5EnQ1CORsjyI9iwCPzuybsgJdg/view?usp=share_link)
 
@@ -99,7 +113,7 @@ Some features for the next phases:
 Our *Project Flow and Development Timeline* can be found [here](https://docs.google.com/document/d/1QA0hiq3B01C-MLfwHBFUVlUo8GxjuN346ZPz-yJGT60/edit?usp=sharing).
 
 ## Project Log
-Our *Project Log* can be found [here](https://docs.google.com/document/d/1QA0hiq3B01C-MLfwHBFUVlUo8GxjuN346ZPz-yJGT60/edit?usp=sharing).
+Our *Project Log* can be found [here](https://docs.google.com/spreadsheets/d/1d6DxgpCpcmTk8kyhEtn4Vz9rUNKAplvYz1qOrUqlTsM/edit#gid=0).
 
 ## Tech-Stack
 
@@ -107,4 +121,7 @@ For our project, we used:
 * Python
 * Flask
 * React
+* JavaScript
+* HTML
+* CSS
 * OpenAI API
