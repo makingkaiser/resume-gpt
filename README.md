@@ -15,17 +15,17 @@ Kaiser Cheng, Joy Foo
 First, install python dependencies.
 Go to the file path where the folder 'flask-server' is and start a virtual environment in the terminal.
 
-For Mac, it was 'python3 -m venv venv'.
+For Mac, run `python3 -m venv venv`, while for Windows, run `py -m venv venv` to create a virtual environment called `env`.
 
 Then, run `pip install -r requirements.txt` to install all required dependencies.
 
 Next, set your OpenAI API key:
 
- Windows: Run the following in the cmd prompt, replacing <yourkey> with your API key:
+ On Windows, run the following in the CLI, replacing <yourkey> with your API key:
 
 `setx OPENAI_API_KEY <yourkey>`
 
-This will apply to future cmd prompt window, so you will need to open a new one to use that variable with curl. You can validate that this variable has been set by opening a new cmd prompt window and typing in 
+This will apply to future CLI windows, so you will need to open a new one to use that variable with curl. You can validate that this variable has been set by opening a new CLI window and typing in 
 
 `echo %OPENAI_API_KEY%`
 
@@ -34,8 +34,9 @@ and place it in the 'flask-server' folder.
 
 Then, navigate to the file path where the 'src' folder is and run 'npm install' in the terminal. 
 
-This will install the required dependencies. Do not update them, but just try npm start, which should open up a localhost:3000 in your browser. 
-Finally, navigate to the 'flask-server' path again and run 'flask run'.
+This will install the required dependencies. Do not update them, but just run `npm start`, which should open up a localhost:3000 in your browser. 
+ 
+Finally, navigate to the 'flask-server' path again and run `flask run`.
 
 ## About the Project
 **What’s the problem?**
