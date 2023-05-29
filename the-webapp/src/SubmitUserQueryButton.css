@@ -1,3 +1,4 @@
+
 .pill {
     font-size: 12px;
     padding: 8px;
@@ -13,3 +14,15 @@
 .pill:hover{
     background-color: #f57bb8;
 }
+
+.output {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-end;
+    border: 2px transparent;
+    height: 200px;
+    width: 700px;
+    border-radius: 7px;
+    background-color: #dcdcdc;
+  }

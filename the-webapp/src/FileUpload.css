@@ -1,3 +1,9 @@
+
+/* body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
 .input {
     display: flex;
     flex-direction: column;
@@ -7,5 +13,22 @@
     height: 300px;
     width: 500px;
     border-radius: 7px;
+    background-color: transparent;
+} */
+
+.upload{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background: transparent;
+    border: 2px dashed #59CBE8;
+    height: 300px;
+    width: 500px;
+    border-radius: 7px;
+    background-color: transparent;
+}
+
+.file {
     background-color: transparent;
 }
