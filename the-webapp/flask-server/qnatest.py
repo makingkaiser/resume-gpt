@@ -1,7 +1,8 @@
 # imports
 from flask import Flask, request, jsonify
 from flask_cors import CORS
-
+from io import StringIO
+import requests 
 import ast  # for converting embeddings saved as strings back to arrays
 import openai  # for calling the OpenAI API
 import pandas as pd  # for storing text and embeddings data
@@ -14,9 +15,16 @@ EMBEDDING_MODEL = "text-embedding-ada-002"
 GPT_MODEL = "gpt-3.5-turbo"
 
 #embeddings_path will link to the embeddings which in this case is 2022 winter olympics
-embeddings_path = './winter_olympics_2022.csv'
+embeddings_path = "https://cdn.openai.com/API/examples/data/winter_olympics_2022.csv"
 
-df = pd.read_csv(embeddings_path)
+# Fetch the CSV file from the URL
+csvresponse = requests.get(embeddings_path).content
+csv_data = csvresponse.decode('utf-8')
+
+
+df = pd.read_csv(StringIO(csv_data))
+# Read the CSV data using pandas
+
 
 # convert embeddings from CSV str type back to list type
 df['embedding'] = df['embedding'].apply(ast.literal_eval)
