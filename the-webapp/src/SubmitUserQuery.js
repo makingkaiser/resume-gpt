@@ -3,6 +3,7 @@ import axios from "axios";
 import "./SubmitUserQueryButton.css";
 axios.defaults.baseURL = "http://localhost:5000";
 axios.defaults.headers.post["Content-Type"] = "application/json";
+
 export default function SubmitUserQuery() {
   const [userQuery, setUserQuery] = useState("");
   const [output, setOutput] = useState("");
@@ -19,7 +20,7 @@ export default function SubmitUserQuery() {
     } catch (error) {
       console.error(error);
     }
-  };
+  }; 
 
   const queryChangeHandler = (event) => {
     setUserQuery(event.target.value);
