@@ -29,12 +29,11 @@ export default function FileUpload() {
 
     return (
         <div>
-            <form method="post" action="#" id="#" onSubmit={submitHandler}>
+            <form method="post" onSubmit={submitHandler}>
                 <div className="form-group files">
                     <label> Upload your file </label>
                     <input type="file"
-                        onChange={handleFile}
-                        className="form-control" multiple="" />
+                        onChange={handleFile}/>
                 </div>
 
                 <button> Upload </button>
