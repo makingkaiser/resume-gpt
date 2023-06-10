@@ -25,10 +25,14 @@ app.post('/upload', (req, res) => {
     })
 });
 
+app.post('/login', (req, res) => {
+
+})
+
 app.get('/', (req, res) => {
     res.json({message: "Backend API"})
 })
 
 app.listen(port, () => {
-    console.log("App is running on port 5000")
+    console.log("App is running on port 3000")
 });
