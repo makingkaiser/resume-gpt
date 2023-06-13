@@ -1,34 +1,14 @@
+
 .App {
   display: flex;
   flex-direction: row;
   text-align: center;
-  justify-content: center;
+  justify-content: space-between;
   align-items: center;
-  gap: 2em;
 }
 
-
-input{
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  border: none;
-  border-radius: 8px;
-  background: #dcdcdc;
-  width: 35svw;
-  height: 3vh;
-  padding: 6px;
-
-  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
-  font-size: 12px;
+.file {
 }
 
-input::placeholder{
-  color: grey;
-  transition: color 0.3s ease;
-}
-
-input:focus::placeholder{
-  color: transparent;
+.chat {
 }

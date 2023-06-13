@@ -11,13 +11,9 @@ function App() {
 
 
   return (
-    <div>
-      <div>
-        <FileUpload />
-      </div>
-      <div>
-        <SubmitUserQuery/>
-      </div>
+    <div className='App'>
+      <FileUpload />
+      <SubmitUserQuery />
     </div>
   );
 }

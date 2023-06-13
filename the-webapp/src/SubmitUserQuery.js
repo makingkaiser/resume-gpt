@@ -11,14 +11,14 @@ export default function SubmitUserQuery() {
   const [reply, setReply] = useState("");
   const [messages, setMessages] = useState([
     {
-      message: "Hello, I am OrbitAI",
+      message: "Hello, I am OrbitAI. Ask me anything!",
       sender: "ChatGPT"
     }
   ])
 
   const submitHandler = async (event) => {
     event.preventDefault();
-    
+
     const newMessage = {
       message: userQuery,
       sender: "user",
@@ -26,6 +26,7 @@ export default function SubmitUserQuery() {
     }
     const accumMessages = [...messages, newMessage];
     setMessages(accumMessages);
+    setUserQuery('');
 
     try {
       const response = await axios.post("/api/execute-gpt-query", {
@@ -44,23 +45,21 @@ export default function SubmitUserQuery() {
 
   const queryChangeHandler = (event) => {
     setUserQuery(event.target.value);
-    
+
   };
 
   return (
     <div>
-      <div> messages </div>
-      <div className="chat">
-        <MainContainer>
-          <ChatContainer>
-            <MessageList>
-              {messages.map((message, i) => {
-                return <Message key={i} model={message} />
-              })}
-            </MessageList>
-          </ChatContainer>
-          </MainContainer>
-
+      <div className="container">
+        <div className="header">
+          <h1> OrbitAI Chat</h1>
+        </div>
+        <div className="body">
+          {messages.map((message, i) => {
+            return <Message key={i} model={message} />
+          })}
+        </div>
+        <div className="footer">
           <form onSubmit={submitHandler}>
             <input
               type="text"
@@ -68,15 +67,10 @@ export default function SubmitUserQuery() {
               value={userQuery}
               onChange={queryChangeHandler}
             />
-            <div>
-              <button className="pill" type="submit">
-                Submit
-              </button>
-            </div>
+            <button className="button" type="submit"> Submit</button>
           </form>
+        </div>
       </div>
-
-      {reply && <div>{reply}</div>}
     </div>
   );
 }
