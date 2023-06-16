@@ -2,7 +2,7 @@ import React from 'react';
 import { useState } from 'react';
 import axios from "axios";
 import './FileUpload.css';
-axios.defaults.baseURL = "http://localhost:3000";
+axios.defaults.baseURL = "https://convoagent.onrender.com";
 axios.defaults.headers.post["Content-Type"] = "application/json";
 
 

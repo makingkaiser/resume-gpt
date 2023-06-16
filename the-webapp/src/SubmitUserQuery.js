@@ -1,14 +1,14 @@
 import React, { useState } from "react";
 import axios from "axios";
 import '@chatscope/chat-ui-kit-styles/dist/default/styles.min.css'
-import { MainContainer, ChatContainer, MessageList, Message, TypingIndicator } from '@chatscope/chat-ui-kit-react';
+import {Message, TypingIndicator } from '@chatscope/chat-ui-kit-react';
 import "./SubmitUserQueryButton.css";
-axios.defaults.baseURL = "http://localhost:5000";
+axios.defaults.baseURL = "https://convoagent.onrender.com";
 axios.defaults.headers.post["Content-Type"] = "application/json";
 
 export default function SubmitUserQuery() {
   const [userQuery, setUserQuery] = useState("");
-  const [reply, setReply] = useState("");
+  // const [reply, setReply] = useState("");
   const [messages, setMessages] = useState([
     {
       message: "Hello, I am OrbitAI. Ask me anything!",
@@ -33,7 +33,7 @@ export default function SubmitUserQuery() {
         input: userQuery,
       });
 
-      setReply([...accumMessages, {
+      setMessages([...accumMessages, {
         message: response.data.output,
         sender: "ChatGPT"
       }]);

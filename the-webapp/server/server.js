@@ -3,7 +3,9 @@ const multer = require("multer");
 const cors = require("cors");
 const app = express();
 const port = 3000;
-app.use(cors());
+app.use(cors({
+    origin: "http://localhost:3000/",
+}));
 
 const storage = multer.diskStorage({
     destination: (req, file, cb) => {
@@ -16,7 +18,7 @@ const storage = multer.diskStorage({
 
 const upload = multer({storage}).single('file')
 
-app.post('/upload', (req, res) => {
+app.post('upload', (req, res) => {
     upload(req, res, (e) => {
         if (e) {
             return res.status(500).json(e)
@@ -25,14 +27,14 @@ app.post('/upload', (req, res) => {
     })
 });
 
-app.post('/login', (req, res) => {
+// app.post('/login', (req, res) => {
 
-})
+// })
 
 app.get('/', (req, res) => {
     res.json({message: "Backend API"})
 })
 
 app.listen(port, () => {
-    console.log("App is running on port 3000")
+    console.log("App is running on port 5000")
 });
