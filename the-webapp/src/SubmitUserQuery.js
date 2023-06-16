@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import axios from "axios";
 import '@chatscope/chat-ui-kit-styles/dist/default/styles.min.css'
-import {Message, TypingIndicator } from '@chatscope/chat-ui-kit-react';
+import {Message} from '@chatscope/chat-ui-kit-react';
 import "./SubmitUserQueryButton.css";
 axios.defaults.baseURL = "https://convoagent.onrender.com";
 axios.defaults.headers.post["Content-Type"] = "application/json";
