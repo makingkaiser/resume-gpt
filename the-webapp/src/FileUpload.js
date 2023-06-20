@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import './FileUpload.css';
 
-axios.defaults.baseURL = 'http://localhost:5000';
+axios.defaults.baseURL = 'https://convoagent.onrender.com';
 
 export default function FileUpload({ onNamespaceUpdate }) {
   const [file, setFile] = useState(null);
