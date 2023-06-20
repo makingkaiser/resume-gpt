@@ -1,17 +1,19 @@
+import React, { useState } from 'react';
 import './App.css';
-import SubmitUserQuery from './SubmitUserQuery';
 import FileUpload from './FileUpload';
+import SubmitUserQuery from './SubmitUserQuery';
 
 function App() {
-  const queryChangeHandler = (event) => {
-    console.log(event.target.value);
-  }
+  const [namespace, setNamespace] = useState('');
 
+  const handleNamespaceUpdate = (newNamespace) => {
+    setNamespace(newNamespace);
+  };
 
   return (
     <div className='App'>
-      <FileUpload />
-      <SubmitUserQuery />
+      <FileUpload onNamespaceUpdate={handleNamespaceUpdate} />
+      <SubmitUserQuery namespace={namespace} onNamespaceUpdate={handleNamespaceUpdate} />
     </div>
   );
 }
