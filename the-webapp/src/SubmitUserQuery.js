@@ -4,7 +4,7 @@ import '@chatscope/chat-ui-kit-styles/dist/default/styles.min.css';
 import { Message } from '@chatscope/chat-ui-kit-react';
 import './SubmitUserQuery.css';
 
-axios.defaults.baseURL = 'http://localhost:5000';
+axios.defaults.baseURL = 'https://convoagent.onrender.com';
 axios.defaults.headers.post['Content-Type'] = 'application/json';
 
 export default function SubmitUserQuery({ namespace, onNamespaceUpdate }) {
