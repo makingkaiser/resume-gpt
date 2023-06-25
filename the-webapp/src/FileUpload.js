@@ -3,12 +3,17 @@ import axios from 'axios';
 import './FileUpload.css';
 
 axios.defaults.baseURL = 'https://convoagent.onrender.com';
+//axios.defaults.baseURL = 'http://localhost:5000';
 
 export default function FileUpload({ onNamespaceUpdate }) {
   const [file, setFile] = useState(null);
+  const [errorMessage, setErrorMessage] = useState(null);
+  const [successMessage, setSuccessMessage] = useState(null);
+
 
   function handleFile(event) {
     setFile(event.target.files[0]);
+    setErrorMessage(null);
   }
 
   useEffect(() => {
@@ -20,13 +25,17 @@ export default function FileUpload({ onNamespaceUpdate }) {
   const submitHandler = async (event) => {
     event.preventDefault();
     if (!file) {
-      console.log('No file selected');
+      const message = 'No file selected';
+      //console.error(message);
+      setErrorMessage(message);
       return;
     }
   
     // Check if the selected file is a PDF
     if (file.type !== 'application/pdf') {
-      console.log('Only PDF files are allowed');
+      const message = 'Only PDF files are allowed';
+    
+      setErrorMessage(message);
       return;
     }
   
@@ -45,9 +54,13 @@ export default function FileUpload({ onNamespaceUpdate }) {
       console.log('Upload Success!');
       console.log(response.data);
       onNamespaceUpdate(response.data.namespace || namespace); // Pass the namespace value to the onNamespaceUpdate function
+      setSuccessMessage('File uploaded successfully! You can now chat with your files.'); // Set the success message
+      setErrorMessage(null); // Clear any previous error message
     } catch (error) {
-      console.error('Error', error);
-      console.error('The process failed at this stage');
+      //console.error('Error', error);
+      //console.error('The process failed at this stage');
+      setErrorMessage('An error occurred while uploading the file', error);
+      setSuccessMessage(null); // Clear any previous success message
     }
   };
   
@@ -55,9 +68,12 @@ export default function FileUpload({ onNamespaceUpdate }) {
   return (
     <div className="upload">
       <form action="#" onSubmit={submitHandler}>
-        <h1>Upload your PDF file</h1>
-        <input type="file" accept="application/pdf" onChange={handleFile} />
+      <h1><label htmlFor="file-input">Upload your PDF file</label></h1>
+        
+        <input id="file-input" type="file" accept="application/pdf" onChange={handleFile} />
         <button>Upload</button>
+        {errorMessage && <p className="error">{errorMessage}</p>}
+        {successMessage && <p className="success">{successMessage}</p>}
       </form>
     </div>
   );

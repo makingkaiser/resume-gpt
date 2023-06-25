@@ -5,6 +5,7 @@ import { Message } from '@chatscope/chat-ui-kit-react';
 import './SubmitUserQuery.css';
 
 axios.defaults.baseURL = 'https://convoagent.onrender.com';
+
 axios.defaults.headers.post['Content-Type'] = 'application/json';
 
 export default function SubmitUserQuery({ namespace, onNamespaceUpdate }) {
@@ -46,34 +47,46 @@ export default function SubmitUserQuery({ namespace, onNamespaceUpdate }) {
   };
 
   const queryChangeHandler = (event) => {
-    setUserQuery(event.target.value);
-  };
+  setUserQuery(event.target.value);
+};
 
-  return (
-    <div className='submit-user-query'>
-      <div className='container'>
-        <div className='header'>
-          <h1>OrbitAI Chat</h1>
-        </div>
-        <div className='body'>
-          {messages.map((message, i) => {
-            return <Message key={i} model={message} />;
-          })}
-        </div>
-        <div className='footer'>
-          <form onSubmit={submitHandler}>
-            <input
-              type='text'
-              placeholder='Ask me anything'
-              value={userQuery}
-              onChange={queryChangeHandler}
-            />
-            <button className='button' type='submit'>
-              Submit
-            </button>
-          </form>
-        </div>
-      </div>
-    </div>
-  );
+return React.createElement(
+  "div",
+  { className: "submit-user-query" },
+  React.createElement(
+    "div",
+    { className: "container" },
+    React.createElement(
+      "div",
+      { className: "header" },
+      React.createElement("h1", null, "OrbitAI Chat")
+    ),
+    React.createElement(
+      "div",
+      { className: "body" },
+      messages.map((message, i) => {
+        return React.createElement(Message, { key: i, model: message });
+      })
+    ),
+    React.createElement(
+      "div",
+      { className: "footer" },
+      React.createElement(
+        "form",
+        { onSubmit: submitHandler },
+        React.createElement("input", {
+          type: "text",
+          placeholder: "Ask me anything",
+          value: userQuery,
+          onChange: queryChangeHandler,
+        }),
+        React.createElement(
+          "button",
+          { className: "button", type: "submit" },
+          "Submit"
+        )
+      )
+    )
+  )
+);
 }
