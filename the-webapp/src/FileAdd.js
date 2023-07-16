@@ -1,5 +1,8 @@
 import React, { useState } from 'react';
 import axios from 'axios';
+import './FileAdd.css';
+import { RiFileUploadLine } from 'react-icons/ri';
+import { Error, Success } from './Messages';
 
 axios.defaults.baseURL = 'http://localhost:5000';
 
@@ -39,7 +42,7 @@ export default function FileSubmit({ namespace }) {
     data.append('file', file);
     console.log(data);
 
-    
+
     try {
       const response = await axios.post(`/upload/${namespace}`, data, {
         headers: {
@@ -56,14 +59,27 @@ export default function FileSubmit({ namespace }) {
     }
   };
 
+  // Clear the error or success message after 5 seconds
+  setTimeout(() => {
+    setErrorMessage(null);
+    setSuccessMessage(null);
+  }, 8000);
+
+
   return (
     <div className="file-submit">
       <form action="#" onSubmit={submitHandler}>
-        <input id="file-input" type="file" accept="application/pdf" onChange={handleFile} />
-        <button>Upload</button>
-        {errorMessage && <p className="error">{errorMessage}</p>}
-        {successMessage && <p className="success">{successMessage}</p>}
+        <div className='combined-button'>
+        <button> Upload </button>
+        <label htmlFor="file-upload" className="new-file-upload">
+          <RiFileUploadLine className="uploadIcon" />
+          <input id="file-upload" type="file" accept="application/pdf" onChange={handleFile} />
+        </label>
+        </div>
       </form>
+
+      {errorMessage && <Error message={errorMessage} />}
+      {successMessage && <Success message={successMessage} />}
     </div>
   );
 }
