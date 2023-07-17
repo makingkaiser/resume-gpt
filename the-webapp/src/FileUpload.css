@@ -1,14 +1,36 @@
+:root {
+  --text-color: #e6e6f0;
+}
+
 body {
-  background-color: #0f123b;
-  color: #fff;
+  background-color: #090b24;
+  color: var(--text-color);
+}
+
+.intro-paragraph {
+  font-size: 1rem;
+  margin-top: 2rem;
+  margin-bottom: 0.5rem;
+  opacity: 0;
+  animation: intro-anim 0.7s ease-in-out forwards;
+  --tw-text-opacity: 1;
+  color: #b9b9b9;
 }
 
 .upload {
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: space-between;
-  height: 100vh;
+  justify-content: center;
+  height: 60vh;
+  background-color: #090b24;
+  color: var(--text-color);
+  border-radius: 0.5rem;
+  margin-top: 0rem;
+  opacity: 0;
+  animation: slide-up 0.5s ease-in-out forwards, form-anim 0.7s ease-in-out 1s forwards;
+
+  
 }
 
 .upload form {
@@ -16,11 +38,13 @@ body {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  background-color: #1c1f4b;
+  background-color: #090b24;
   padding: 2rem;
   border-radius: 0.5rem;
-  box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.1);
-  animation: slide-up 0.5s ease-in-out;
+  box-shadow: 0 0.5rem 1rem rgba(20, 15, 82, 0.618);
+  border: 1px solid #cccccc22;
+  opacity: 0;
+  animation: form-anim 0.5s ease-in-out 1s forwards;
 }
 
 h1 {
@@ -34,34 +58,48 @@ h1 {
   color: whitesmoke;
   display: none;
 }
-
 .upload form input[type="text"] {
+  margin-top: 1rem;
   margin-bottom: 1rem;
   padding: 0.5rem;
-  border: none;
-  border-radius: 0.25rem;
-  box-shadow: 0 0.25rem 0.5rem rgba(0, 0, 0, 0.1);
+  border: 1px solid #ccc;
+  border-radius: 0.5rem;
+  
   font-size: 1rem;
   width: 100%;
   max-width: 20rem;
-  background-color: #fff;
-  color: #0f123b;
+  background-color: #090b24;
+  color: var(--text-color);
+  box-shadow: 0 0.5rem 1rem rgba(20, 15, 82, 0.618);
+}
+
+input[type="text"]:hover,
+input[type="text"]:focus {
+  outline: none;
+  border-color: #1c1f4b;
+  outline-color: #1c1f4b;
+  background-color: #1c1f4b;
+  transition: background-color 0.3s ease-in-out;
+  
   font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
 }
 
 .custom-file-upload {
   display: flex;
-  flex-direction: column;
   align-items: center;
   justify-content: center;
-  text-align: center;
-  border: 2px dashed #b8ccfa;
-  border-radius: 0.25rem;
-  padding: 0.4rem;
-  margin-bottom: 0.8rem;
-  height: 8rem;
-  width: 100%;
-  max-width: 20rem;
+  height: 3rem;
+  width: 10rem;
+  border: 1px solid #ccc;
+  border-radius: 0.5rem;
+  box-shadow: 0 0.5rem 1rem rgba(20, 15, 82, 0.618);
+  transition: all 0.3s ease-in-out;
+}
+
+.custom-file-upload:hover {
+  background-color: #1c1f4b;
+  border-color: #1c1f4b;
+  
 }
 
 .custom-file-upload:hover {
@@ -69,32 +107,32 @@ h1 {
 }
 
 .upload-icon {
-  font-size: 4rem;
-  color: #b8ccfa;
+  margin-right: 0.3rem;
+  font-size: 2rem;
+  color: var(--text-color);
+  text-align: center;
 }
-
-.upload-icon:hover {
-  color: #4f82f8;
-}
-
 .upload form button {
-  padding: 0.5rem 1rem;
+  
+  background-color: #090f5d;
+  color: var(--text-color);
   border: none;
-  border-radius: 0.25rem;
-  background-color: #8faffa;
-  color: #fff;
-  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+  border-radius: 0.5rem;
+  padding: 0.75rem 1.3rem;
   font-size: 1rem;
   cursor: pointer;
-  transition: background-color 0.2s ease-in-out;
+  transition: background-color 0.3s ease-in-out;
+
+  transition: all 0.3s ease-in-out;
 }
 
-.upload form button:hover {
-  background-color: #4f82f8;
+button:hover {
+  
+  background-color: #313791;
 }
 
 .error {
-  color: #ff0000;
+  color: #a80101;
   margin-top: 1rem;
 }
 
@@ -107,9 +145,9 @@ h1 {
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 20rem;
-  height: rem;
-  background-color: #fff;
+  width: 500px;
+  height: 150px;
+  background-color: var(--text-color);
   animation: logo-anim 1s ease-in-out backwards;
   margin: 0 auto;
 }
@@ -120,12 +158,7 @@ h1 {
   animation: heading-anim 1s ease-in-out;
 }
 
-.intro-paragraph {
-  font-size: 1.5rem;
-  margin-top: 2rem;
-  opacity: 0;
-  animation: intro-anim 1s ease-in-out forwards;
-}
+
 
 @keyframes slide-up {
   from {
@@ -175,17 +208,14 @@ h1 {
   }
 }
 
-@keyframes fadeOut {
-  0% {
-    opacity: 1;
-  }
-
-  90% {
-    opacity: 1;
-  }
-
-  100% {
+@keyframes form-anim {
+  from {
     opacity: 0;
+    transform: translateY(2rem);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
   }
 }
 
@@ -196,3 +226,19 @@ h1 {
 .intro-paragraph:nth-of-type(2) {
   animation-delay: 1s;
 }
+
+
+.blinking-cursor {
+  margin-left: 5px;
+  background-color: var(--text-color);
+  animation: blink 1s infinite;
+}
+@keyframes blink {
+  0%, 50% {
+    opacity: 1;
+  }
+  50.1%, 100% {
+    opacity: 0;
+  }
+}
+
