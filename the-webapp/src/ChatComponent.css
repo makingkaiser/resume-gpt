@@ -1,10 +1,11 @@
 .container {
-    width: 650px;
-    height: 97vh;
+    width: 90vw;
+    height: 100vh;
     display: flex;
     flex-direction: column;
     justify-self: end;
-    background-color: #dcdcdc;
+    color: whitesmoke;
+    background-color: #0f123b;
 }
 
 .header {
@@ -15,57 +16,100 @@
     display: flex;
     flex-direction: column;
     justify-content: center;
-    color: black;
     font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+
+.namespace {
+    display: flex;
+    flex-direction: column;
+    color: whitesmoke;
+    background-color: #0f123b;
+    padding: 7px;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+
+.cs-message__content {
+    box-sizing: border-box;
+    color: rgba(0, 0, 0, .87);
+    background-color: #b8ccfa;
+    margin-top: 0;
+    padding: 0.6em 0.9em;
+    border-radius: 0.7em 0.7em 0.7em 0em;
+    white-space: pre-wrap;
+    overflow-wrap: anywhere;
+    word-break: break-word;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    font-weight: normal;
+    font-size: .91em;
+    font-feature-settings: normal;
+    font-variant: normal;
+}
+
+.cs-message--outgoing .cs-message__content {
+    color: rgba(0, 0, 0, .87);
+    background-color: #7ca1f6;
+    border-radius: 0.7em 0.7em 0em 0.7em;
 }
 
 .body {
     flex: 1;
-    color: whitesmoke;
-    background-color: whitesmoke;
+    overflow-y: auto;
+    color: black;
+    background-color: 0f123b;
     padding: 20px;
 }
 
-
 .footer {
-    height: 50px;
+    width: 100%;
+    height: 7%;
     display: flex;
-    flex-direction: column;
-    justify-content: space-around;
-    padding-top: 4px;
+    flex-direction: row;
+    justify-content: space-evenly;
 }
 
 .footer form {
+    width: 100%;
     display: flex;
-    justify-content: space-around;
-    padding-left: 10px;
-    padding-right: 5px;
+    flex-direction: row;
+    margin-left: 0.5rem;
+    color: whitesmoke;
 }
 
 .footer form input {
-    flex: 1;
-    height: 20px;
-    border: none;
+    flex-grow: 1;
+    align-self: center;
+    border: whitesmoke solid 2px;
     border-radius: 7px;
     outline: none;
-    background: #c1c1c1;
+    background: #0f123b;
+    color: whitesmoke;
     padding: 6px;
     font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
-    font-size: 14px;
+    font-size: .91em;
 }
 
 .footer form button {
-    font-size: 13px;
+    align-self: center;
+    font-size: .91em;
     padding: 7px;
     margin: 0.25em;
-    border-radius: 9px;
-    border: none;
+    border: whitesmoke solid 2px;
+    border-radius: 7px;
     outline: none;
     font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
     box-sizing: border-box;
-    background-color: #b8ccfa;
+    background-color: #0f123b;
+    color: whitesmoke;
 }
 
 .footer form button:hover {
     background-color: #7ea3f9;
+}
+
+.FileAdd {
+    align-self: center;
+    height: 100%;
+    width: 10%;
+    display: flex;
+    flex-direction: row;
 }

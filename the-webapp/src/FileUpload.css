@@ -7,11 +7,11 @@ body {
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
+  justify-content: space-between;
   height: 100vh;
 }
 
-form {
+.upload form {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -29,13 +29,13 @@ h1 {
   text-align: center;
 }
 
-input[type="file"] {
+.upload form input[type="file"] {
   margin-bottom: 1rem;
-  color: transparent;
+  color: whitesmoke;
   display: none;
 }
 
-input[type="text"] {
+.upload form input[type="text"] {
   margin-bottom: 1rem;
   padding: 0.5rem;
   border: none;
@@ -46,6 +46,7 @@ input[type="text"] {
   max-width: 20rem;
   background-color: #fff;
   color: #0f123b;
+  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
 }
 
 .custom-file-upload {
@@ -54,43 +55,42 @@ input[type="text"] {
   align-items: center;
   justify-content: center;
   text-align: center;
-  border: 1px solid #ccc;
+  border: 2px dashed #b8ccfa;
   border-radius: 0.25rem;
-  padding: 0.5rem;
+  padding: 0.4rem;
+  margin-bottom: 0.8rem;
+  height: 8rem;
   width: 100%;
   max-width: 20rem;
-  background-color: #fff;
-  color: #0f123b;
 }
 
-.custom-file-upload label {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  text-align: center;
-  margin-top: 0.5rem;
+.custom-file-upload:hover {
+  border-color: #4f82f8;
 }
 
 .upload-icon {
-  font-size: 2rem;
-  margin-bottom: 0.5rem;
-  color: #fff;
+  font-size: 4rem;
+  color: #b8ccfa;
 }
 
-button {
+.upload-icon:hover {
+  color: #4f82f8;
+}
+
+.upload form button {
   padding: 0.5rem 1rem;
   border: none;
   border-radius: 0.25rem;
-  background-color: #0077ff;
+  background-color: #8faffa;
   color: #fff;
+  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
   font-size: 1rem;
   cursor: pointer;
   transition: background-color 0.2s ease-in-out;
 }
 
-button:hover {
-  background-color: #005ae6;
+.upload form button:hover {
+  background-color: #4f82f8;
 }
 
 .error {
@@ -132,6 +132,7 @@ button:hover {
     transform: translateY(2rem);
     opacity: 0;
   }
+
   to {
     transform: translateY(0);
     opacity: 1;
@@ -143,6 +144,7 @@ button:hover {
     opacity: 0;
     transform: translateY(20%);
   }
+
   to {
     opacity: 1;
     transform: translateY(0);
@@ -154,6 +156,7 @@ button:hover {
     transform: translateY(-2rem);
     opacity: 0;
   }
+
   to {
     transform: translateY(0);
     opacity: 1;
@@ -165,9 +168,24 @@ button:hover {
     transform: translateY(2rem);
     opacity: 0;
   }
+
   to {
     transform: translateY(0);
     opacity: 1;
+  }
+}
+
+@keyframes fadeOut {
+  0% {
+    opacity: 1;
+  }
+
+  90% {
+    opacity: 1;
+  }
+
+  100% {
+    opacity: 0;
   }
 }
 

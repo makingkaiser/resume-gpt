@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 import './FileUpload.css';
-import {RiFileUploadLine} from 'react-icons/ri';
-import {ReactComponent as ReactLogo} from './clearlogo.svg';
+import { RiFileUploadLine } from 'react-icons/ri';
+import { ReactComponent as ReactLogo } from './clearlogo.svg';
 document.addEventListener('DOMContentLoaded', () => {
 
   const text = "This is a ChatGPT-like typing effect, simulating human typing with random delays and a blinking cursor. It also supports multiline text and ensures the cursor is displayed at the end of the last output character.";
@@ -30,7 +30,7 @@ export default function FileUpload({ onNamespaceUpdate }) {
   const [namespace, setNamespace] = useState('');
   const [errorMessage, setErrorMessage] = useState(null);
   const [successMessage, setSuccessMessage] = useState(null);
-  
+
 
   function handleFile(event) {
     setFile(event.target.files[0]);
@@ -113,30 +113,30 @@ export default function FileUpload({ onNamespaceUpdate }) {
 
   return (
     <div className="landing-page">
+      <div className="logo">
+        <ReactLogo />
+      </div>
+      <h1 className="heading">Welcome to OrbitAI! </h1>
+      <div className="intro">
+        <div id="typewriter"></div>
+        <p className="intro-paragraph">OrbitAI is a chatbot that learns any information through the documents you upload. </p>
+        <p className="intro-paragraph"> Ask questions, upload addtional documents for the AI to learn, and share your customized instance through namespaces. </p>
+      </div>
 
-  <div className="logo">
-    <ReactLogo />
-  </div>
-  <h1 className="heading">Welcome to OrbitAI! </h1>
-  <div className="intro">
-    <div id="typewriter"></div>
-    <p className="intro-paragraph">OrbitAI is a chatbot that learns any information through the documents you upload. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit </p>
-    <p className="intro-paragraph"> Ask questions, upload addtional documents for the AI to learn, and share your customized instance through namespaces. Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit   </p>
-  </div>
-  <div className="upload">
-    <form action="#" onSubmit={submitHandler}>
-      <h2>Upload your PDF file (Max 50MB) or enter an existing namespace!</h2>
-      <label htmlFor="file-upload" className="custom-file-upload">
-        <RiFileUploadLine className="upload-icon" />
-        upload a file...
-      </label>
-      <input id="file-upload" type="file" accept="application/pdf" onChange={handleFile} />
-      <input type="text" placeholder="Enter an existing namespace..." value={namespace} onChange={handleNamespace} />
-      <button>Upload</button>
-      {errorMessage && <p className="error">{errorMessage}</p>}
-      {successMessage && <p className="success">{successMessage}</p>}
-    </form>
-  </div>
-</div>
+      <div className="upload">
+        <form action="#" onSubmit={submitHandler}>
+          <h2>Upload your PDF file (Max 50MB) or enter an existing namespace!</h2>
+          <label htmlFor="file-upload" className="custom-file-upload">
+            <RiFileUploadLine className="upload-icon" />
+            <input id="file-upload" type="file" accept="application/pdf" onChange={handleFile} />
+          </label>
+          
+          <input type="text" placeholder="Enter an existing namespace..." value={namespace} onChange={handleNamespace} />
+          <button>Upload</button>
+          {errorMessage && <p className="error">{errorMessage}</p>}
+          {successMessage && <p className="success">{successMessage}</p>}
+        </form>
+      </div>
+    </div>
   );
 }

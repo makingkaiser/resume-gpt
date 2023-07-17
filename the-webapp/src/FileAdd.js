@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState , useEffect } from 'react';
 import axios from 'axios';
 import './FileAdd.css';
 import { RiFileUploadLine } from 'react-icons/ri';
@@ -60,26 +60,41 @@ export default function FileSubmit({ namespace }) {
   };
 
   // Clear the error or success message after 5 seconds
-  setTimeout(() => {
-    setErrorMessage(null);
-    setSuccessMessage(null);
-  }, 8000);
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setErrorMessage(null);
+      setSuccessMessage(null);
+    }, 5000);
 
+    return () => clearTimeout(timer);
+  }, [errorMessage, successMessage]);
 
   return (
     <div className="file-submit">
       <form action="#" onSubmit={submitHandler}>
         <div className='combined-button'>
-        <button> Upload </button>
-        <label htmlFor="file-upload" className="new-file-upload">
-          <RiFileUploadLine className="uploadIcon" />
-          <input id="file-upload" type="file" accept="application/pdf" onChange={handleFile} />
-        </label>
+          <button> Upload </button>
+          <label htmlFor="file-upload" className="new-file-upload">
+            <RiFileUploadLine className="uploadIcon" />
+            <input id="file-upload" type="file" accept="application/pdf" onChange={handleFile} />
+          </label>
         </div>
       </form>
 
-      {errorMessage && <Error message={errorMessage} />}
-      {successMessage && <Success message={successMessage} />}
+      {errorMessage && (
+        <div className="popup-container">
+          <div className="popup-content">
+            <Error message={errorMessage} />
+          </div>
+        </div>
+      )}
+      {successMessage && (
+        <div className="popup-container">
+          <div className="popup-content">
+            <Success message={successMessage} />
+          </div>
+        </div>
+      )}
     </div>
   );
 }
