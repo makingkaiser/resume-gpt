@@ -1,17 +1,19 @@
+import React, { useState } from 'react';
 import './App.css';
-import SubmitUserQuery from './SubmitUserQuery';
 import FileUpload from './FileUpload';
+import ChatBox from './ChatComponent';
 
 function App() {
-  const queryChangeHandler = (event) => {
-    console.log(event.target.value);
-  }
+  const [namespace, setNamespace] = useState(null);
 
+  const handleNamespaceUpdate = (newNamespace) => {
+    setNamespace(newNamespace);
+  };
 
   return (
-    <div className='App'>
-      <FileUpload />
-      <SubmitUserQuery />
+    <div className="App">
+      {namespace && <ChatBox namespace={namespace} />}
+      {!namespace && <FileUpload onNamespaceUpdate={handleNamespaceUpdate} />}
     </div>
   );
 }
