@@ -9,6 +9,9 @@ import FileAdd from './FileAdd';
 axios.defaults.baseURL = 'http://localhost:5000';
 axios.defaults.headers.post['Content-Type'] = 'application/json';
 
+
+
+
 export default function ChatBox({ namespace }) {
   const [userQuery, setUserQuery] = useState('');
   const [messages, setMessages] = useState([
