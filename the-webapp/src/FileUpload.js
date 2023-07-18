@@ -4,8 +4,8 @@ import './FileUpload.css';
 import {RiFileUploadLine} from 'react-icons/ri';
 import {ReactComponent as ReactLogo} from './orbit.svg';
 
-axios.defaults.baseURL = 'http://localhost:5000';
-//axios.defaults.baseURL = 'https://convoagent.onrender.com'
+//axios.defaults.baseURL = 'http://localhost:5000';
+axios.defaults.baseURL = 'https://convoagent.onrender.com'
 export default function FileUpload({ onNamespaceUpdate }) {
   const [file, setFile] = useState(null);
   const [namespace, setNamespace] = useState('');

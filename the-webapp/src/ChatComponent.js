@@ -6,8 +6,8 @@ import './ChatComponent.css';
 import FileAdd from './FileAdd';
 
 
-axios.defaults.baseURL = 'http://localhost:5000';
-//axios.defaults.baseURL = 'https://convoagent.onrender.com'
+//axios.defaults.baseURL = 'http://localhost:5000';
+axios.defaults.baseURL = 'https://convoagent.onrender.com'
 
 axios.defaults.headers.post['Content-Type'] = 'application/json';
 
@@ -27,10 +27,9 @@ export default function ChatBox({ namespace }) {
   useEffect(() => {
     if (namespace && prevNamespaceRef.current !== namespace) {
       axios.post(`/api/execute-gpt-query/${namespace}`, {
-        input: `You are a language model with access to a database. Using the database, construct an overview of the contents of the knowledge base as best you can in the following format:
+        input: `using the Document search, describe the content as best you can in the following format:
       Hello, My name is OrbitAI! your document is about <insert the overview here>
       
-      (in your final answer, do not explicitly mention the knowledge base)
       `
       })
         .then(response => {
@@ -41,7 +40,7 @@ export default function ChatBox({ namespace }) {
           setMessages([...messages, message1]);
 
           axios.post(`/api/execute-gpt-query/${namespace}`, {
-            input: `based on the document, generate a list of 3-4 questions that encapsulate the main points of the document that you definitely know the answer to, in the format:
+            input: `based on the document search, generate a list of 3-4 questions that encapsulate the main points of the document that you definitely know the answer to, in the format:
           Here are some questions I can answer:
           <insert questions here>
           `
