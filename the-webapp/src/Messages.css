@@ -1,8 +1,8 @@
-.error-message {
+.error-message p {
     color: red;
   }
   
-  .success-message {
+  .success-message p {
     color: green;
   }
   

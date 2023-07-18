@@ -92,11 +92,12 @@ color: #4f82f8;
   width: fit-content;
   max-width: 90%;
   background-color: rgba(0, 0, 0, 0.5);
+  color: #0f123b;
   display: flex;
   justify-content: center;
   align-items: center;
   visibility: show;
-  opacity: 50;
+  opacity: 100;
   transition: visibility 0s linear 0.25s, opacity 0.25s;
   z-index: 100;
 }
@@ -109,4 +110,5 @@ color: #4f82f8;
   max-width: 400px;
   text-align: center;
   box-shadow: 0 2px 4px #c1c1c1;
+  color: #0f123b;
 }
