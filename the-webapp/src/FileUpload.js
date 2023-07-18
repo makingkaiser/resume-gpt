@@ -3,26 +3,7 @@ import axios from 'axios';
 import './FileUpload.css';
 import {RiFileUploadLine} from 'react-icons/ri';
 import {ReactComponent as ReactLogo} from './orbit.svg';
-// document.addEventListener('DOMContentLoaded', () => {
 
-//   const text = "This is a ChatGPT-like typing effect ,simulating human typing with random delays and a blinking cursor. It also supports multiline text and ensures the cursor is displayed at the end of the last output character.";
-//   const typewriter = document.getElementById('typewriter');
-//   const words = text.split(/\s+/);
-//   let index = 0;
-
-//   function type() {
-//     if (index < words.length) {
-//       typewriter.innerHTML = words.slice(0, index + 1).join(' ') + '<span class="blinking-cursor">|</span>';
-//       index++;
-//       setTimeout(type, Math.random() * 100 + 50);
-//     } else {
-//       typewriter.innerHTML = words.join(' ') + '<span class="blinking-cursor">|</span>';
-//     }
-//   }
-
-//   // start typing
-//   type();
-//});
 axios.defaults.baseURL = 'http://localhost:5000';
 //axios.defaults.baseURL = 'https://convoagent.onrender.com'
 export default function FileUpload({ onNamespaceUpdate }) {
@@ -30,7 +11,7 @@ export default function FileUpload({ onNamespaceUpdate }) {
   const [namespace, setNamespace] = useState('');
   const [errorMessage, setErrorMessage] = useState(null);
   const [successMessage, setSuccessMessage] = useState(null);
-  const [label, setLabel] = useState('Upload a file...'); // Define label state here
+  const [label, setLabel] = useState('Upload a file...'); 
   
 
   function handleFile(event) {
