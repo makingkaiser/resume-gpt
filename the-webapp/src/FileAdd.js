@@ -6,7 +6,7 @@ import { Error, Success } from './Messages';
 
 axios.defaults.baseURL = 'http://localhost:5000';
 
-export default function FileSubmit({ namespace }) {
+export default function FileAdd({ namespace }) {
   const [file, setFile] = useState(null);
   const [errorMessage, setErrorMessage] = useState(null);
   const [successMessage, setSuccessMessage] = useState(null);
@@ -73,8 +73,9 @@ export default function FileSubmit({ namespace }) {
     <div className="file-submit">
       <form action="#" onSubmit={submitHandler}>
         <div className='combined-button'>
-          <button> Upload </button>
+          <button data-testid="upload-button"> Upload </button>
           <label htmlFor="file-upload" className="new-file-upload">
+            Upload file
             <RiFileUploadLine className="uploadIcon" />
             <input id="file-upload" type="file" accept="application/pdf" onChange={handleFile} />
           </label>
@@ -82,7 +83,7 @@ export default function FileSubmit({ namespace }) {
       </form>
 
       {errorMessage && (
-        <div className="popup-container">
+        <div className="popup-container" data-testid="error-message">
           <div className="popup-content">
             <Error message={errorMessage} />
           </div>

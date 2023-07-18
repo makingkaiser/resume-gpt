@@ -7,14 +7,11 @@ import FileAdd from './FileAdd';
 
 
 axios.defaults.baseURL = 'http://localhost:5000';
-//axios.defaults.baseURL = 'https://convoagent.onrender.com'
 
 axios.defaults.headers.post['Content-Type'] = 'application/json';
 
 
-
-
-export default function ChatBox({ namespace }) {
+export default function ChatComponent({ namespace }) {
   const [userQuery, setUserQuery] = useState('');
   const [messages, setMessages] = useState([
     {
@@ -121,8 +118,10 @@ export default function ChatBox({ namespace }) {
 
         <div className="footer">
           <form onSubmit={submitHandler}>
+          <label htmlFor="message-input">Type your message</label>
             <input
               type="text"
+              id="message-input"
               placeholder="Ask me anything"
               value={userQuery}
               onChange={queryChangeHandler}

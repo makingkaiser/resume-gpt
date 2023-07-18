@@ -1,4 +1,5 @@
 import React from 'react';
+import './Messages.css';
 
 export const Error = ({ message }) => {
   return (

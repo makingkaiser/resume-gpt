@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import './App.css';
 import FileUpload from './FileUpload';
-import ChatBox from './ChatComponent';
+import ChatComponent from './ChatComponent';
 
 function App() {
   const [namespace, setNamespace] = useState(null);
@@ -12,7 +12,7 @@ function App() {
 
   return (
     <div className="App">
-      {namespace && <ChatBox namespace={namespace} />}
+      {namespace && <ChatComponent namespace={namespace} />}
       {!namespace && <FileUpload onNamespaceUpdate={handleNamespaceUpdate} />}
     </div>
   );
