@@ -1,0 +1,112 @@
+.file-submit {
+  position: relative;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+}
+
+.file-submit form {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  align-items: center;
+  margin-left: 0rem;
+}
+
+.combined-button {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  align-items: center;
+  border-radius: 7px;
+  border: 1px solid #ccc;
+  border-radius: 7px;
+  margin-left: 0rem;
+  margin-right: 0.5rem;
+  background-color: #0f123b;
+  box-shadow: 0 0.5rem 1rem rgba(20, 15, 82, 0.618);
+  transition: all 0.3s ease-in-out;
+}
+
+.combined-button:hover {
+  background-color: #1c1f4b;
+  border-color: #1c1f4b;
+  border-color: #4f82f8;
+}
+
+.file-submit form button {
+  align-self: center;
+  padding: 7px;
+  padding-right: 5px;
+  margin: 0em;
+  border-radius: 9px 0px 0px 9px;
+  border: none;
+  outline: none;
+  font-size: .91em;
+  box-sizing: border-box;
+  background-color: #0f123b;
+  color: whitesmoke;
+}
+
+.file-submit form button:hover {
+color: #4f82f8;
+}
+
+.new-file-upload {
+  display: flex;
+  font-size: 13px;
+  border-radius: 9px;
+  background-color: transparent;
+}
+
+.uploadIcon {
+  font-size: 1.5rem;
+  color: whitesmoke;
+  border-radius: 0px 7px 7px 0px;
+  margin-right: 0rem;
+  padding-top: 2px;
+  padding-bottom: 2px;
+  padding-right: 2px;
+  padding-left: 2px;
+  background-color: #0f123b;
+}
+
+.uploadIcon:hover {
+  background-color: #1c1f4b;
+  border-color: #1c1f4b;
+  border-color: #4f82f8;
+  color: #4f82f8;
+}
+
+.file-submit form input[type="file"] {
+  margin-bottom: 1rem;
+  color: transparent;
+  display: none;
+}
+
+.popup-container {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: fit-content;
+  max-width: 90%;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  visibility: show;
+  opacity: 50;
+  transition: visibility 0s linear 0.25s, opacity 0.25s;
+  z-index: 100;
+}
+
+
+.popup-content {
+  background-color: white;
+  padding: 20px;
+  border-radius: 5px;
+  max-width: 400px;
+  text-align: center;
+  box-shadow: 0 2px 4px #c1c1c1;
+}
