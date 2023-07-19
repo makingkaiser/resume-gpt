@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import './App.css';
 import axios from 'axios';
 import FileUpload from './FileUpload';
-import ChatComponent from './ChatComponent';
+import ChatBox from './ChatComponent';
 
 function App() {
   const [namespace, setNamespace] = useState(null);
@@ -47,7 +47,7 @@ function App() {
 }, []);
   return (
     <div className="App">
-      {namespace && <ChatComponent namespace={namespace} />}
+      {namespace && <ChatBox namespace={namespace} />}
       {!namespace && <FileUpload onNamespaceUpdate={handleNamespaceUpdate} />}
     </div>
   );

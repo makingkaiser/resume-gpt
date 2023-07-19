@@ -11,8 +11,8 @@ export default function FileUpload({ onNamespaceUpdate }) {
   const [namespace, setNamespace] = useState('');
   const [errorMessage, setErrorMessage] = useState(null);
   const [successMessage, setSuccessMessage] = useState(null);
-  const [label, setLabel] = useState('Upload a file...'); 
-  
+  const [label, setLabel] = useState('Upload a file...');
+  const [isLoading, setIsLoading] = useState(false); // Add a state variable for the loading indicator
 
   function handleFile(event) {
     const selectedFile = event.target.files[0];
@@ -27,14 +27,14 @@ export default function FileUpload({ onNamespaceUpdate }) {
       setSuccessMessage(null);
       setLabel('Upload a file...');
     }
-}
+  }
 
-function handleCancel() {
+  function handleCancel() {
     setFile(null);
     setErrorMessage(null);
     setSuccessMessage(null);
     setLabel('Upload a file...');
-}
+  }
 
   function handleNamespace(event) {
     setNamespace(event.target.value);
@@ -76,6 +76,8 @@ function handleCancel() {
 
       const namespace = file.name.split('.').slice(0, -1).join('.'); // Extract filename without extension
 
+      setIsLoading(true); // Set the loading indicator to true
+
       try {
         const response = await axios.post(`/upload/${namespace}`, data, {
           headers: {
@@ -91,6 +93,8 @@ function handleCancel() {
         setErrorMessage('An error occurred while uploading the file', error);
         setSuccessMessage(null); // Clear any previous success message
       }
+
+      setIsLoading(false); // Set the loading indicator to false
     } else if (namespace) {
       try {
         const response = await axios.post(`/namespacevalidity/${namespace}`);
@@ -134,7 +138,8 @@ function handleCancel() {
         </div>
       )}
       <input type="text" placeholder="Enter an existing namespace..." value={namespace} onChange={handleNamespace} />
-      <button style={{ fontWeight: 'bold' }}>Start!</button>
+      <button style={{ fontWeight: 'bold' }} disabled={isLoading}>Start!</button> {/* Disable the button while the file is uploading */}
+      {isLoading && <p className="loading">Uploading file...</p>} {/* Show the loading indicator while the file is uploading */}
       {errorMessage && <p className="error">{errorMessage}</p>}
       {successMessage && <p className="success">{successMessage}</p>}
     </form>

@@ -6,13 +6,16 @@ import './ChatComponent.css';
 import FileAdd from './FileAdd';
 
 
-axios.defaults.baseURL = 'http://localhost:5000';
+//axios.defaults.baseURL = 'http://localhost:5000';
+axios.defaults.baseURL = 'https://convoagent.onrender.com'
+
 
 axios.defaults.headers.post['Content-Type'] = 'application/json';
 
 
 export default function ChatComponent({ namespace }) {
   const [userQuery, setUserQuery] = useState('');
+  const [isSubmitDisabled, setIsSubmitDisabled] = useState(true);
   const [messages, setMessages] = useState([
     {
       message: 'Hello, My name is OrbitAI! I am a chatbot that can answer questions about your document. Reading your document...',
@@ -97,6 +100,7 @@ export default function ChatComponent({ namespace }) {
 
   const queryChangeHandler = (event) => {
     setUserQuery(event.target.value);
+    setIsSubmitDisabled(event.target.value === '');
   };
 
   return (
@@ -117,7 +121,7 @@ export default function ChatComponent({ namespace }) {
 
         <div className="footer">
           <form onSubmit={submitHandler}>
-          <label htmlFor="message-input">Type your message</label>
+          <label htmlFor="message-input" hidden>Type your message</label>
             <input
               type="text"
               id="message-input"
@@ -125,7 +129,7 @@ export default function ChatComponent({ namespace }) {
               value={userQuery}
               onChange={queryChangeHandler}
             />
-            <button type="submit">
+            <button type="submit" disabled={isSubmitDisabled}>
               Submit
             </button>
           </form>
