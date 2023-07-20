@@ -153,6 +153,13 @@ export default function FileUpload({ onNamespaceUpdate }) {
     want to chat with the document again, you don't have to upload the document
     again; simply enter the namespace.
   </p>
+  <p style={{ fontSize: "0.7rem" }}>
+          As this is a free instance developed for the CP2106 module, the backend
+          is based on a free tier and spins down after 15 minutes of activity, so
+          please allow for about 50 seconds for the database to wake from sleep.
+          Additionally, the API is self-sponsored, so we ask you not to spam our
+          bot :( however feel free to try as much as you wish to!
+        </p>
 </div>
 
       </div>
