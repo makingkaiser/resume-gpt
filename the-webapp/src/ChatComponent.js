@@ -26,9 +26,9 @@ export default function ChatComponent({ namespace }) {
     if (namespace && prevNamespaceRef.current !== namespace) {
       axios
         .post(`/api/execute-gpt-query/${namespace}`, {
-          input: `based on the document search, generate main points of the document as best you can in the following format:
+          input: `based on the document search, generate an overview of the document as best you can in the following format:
       I believe your document is about <insert the overview here>
-      If you cannot find a document or have trouble, instead select a few interesting points to give an overview of instead
+      If you cannot find a document or have trouble, instead select a few interesting or main points instead to tell the user about.
       `,
         })
         .then((response) => {

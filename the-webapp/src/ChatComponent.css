@@ -40,6 +40,7 @@
     font-size: .91em;
     font-feature-settings: normal;
     font-variant: normal;
+    text-align: left;
 }
 
 .cs-message--outgoing .cs-message__content {
