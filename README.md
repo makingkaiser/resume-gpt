@@ -9,119 +9,51 @@ Kaiser Cheng, Joy Foo
 
 **Level of Achievement**: Apollo 11
 
+## About our Project
+**The Problem**
 
-# Instructions on running the webapp
-(As of 27 May)
+We all know how ChatGPT works -- it responds to questions you may have with insightful answers. But what happens when you have questions about a customised dataset that is too specific for the general body of knowledge that GPT-3 is trained on? What if you have some burning questions about some text that ChatGPT has no idea exists? You are left with unanswered questions because even ChatGPT cannot help you.
 
-First, install python dependencies.
+**Our Solution**
 
-Next, start a virtual environment. This can be done in the following two ways:
+OrbitAI is your second brain in the cloud. 
+Ask questions, upload additional documents for OrbitAI to learn,
+and share your customized chatbot through namespaces.
 
-**Option 1**
+### Backend Design
 
-Go to the file path where the folder 'flask-server' is and start a virtual environment in the terminal.
+The backend consists of 2 main steps, namely Ingestion and LangChain Processing. 
 
-For Mac, run `python3 -m venv venv`, while for Windows, run `py -m venv venv` to create a virtual environment called `env`.
+**Ingestion**
 
-Then, run `pip install -r requirements.txt` to install all required dependencies.
+The documents (limited to PDFs in this milestone) are received by the backend, which then parses the documents by extracting the raw text. 
+In future iterations, other file formats can be supported. As long as the content can be parsed into a text format, any LLM will be able to evaluate the ingested documents. 
 
-**Option 2**
+Next, it is necessary to split up the text into chunks.  Ideally, semantically related pieces of text should be grouped together, however given that the scope of our project focuses on the typical types of PDFs, we split the text as follows:
+1. Split the text up into small, semantically meaningful chunks (often sentences).
+2. Start combining these small chunks into a larger chunk until a certain size is reached (the larger the size, the more costly the operation).
+3. Once you reach that size, make that chunk its own piece of text and then start creating a new chunk of text with some overlap (to keep context between chunks).
 
-Alternatively, on VS Code, open the requirements.txt file and click on 'Create Environment'. Choose to create a Venv, select the appropriate Python interpreter, and choose to install `requirements.txt`.
+These steps ensure that the chunks are at least somewhat semantically related, and that the chunks chosen to be shown to the LLM at the second last step are as relevant as possible according to the question.
 
-Next, set your OpenAI API key:
-
-[Here](https://help.openai.com/en/articles/5112595-best-practices-for-api-key-safety) is one way to set your key as an environment variable. The following is what we did.
-
-Firstly, if you already have an OpenAI account, generate an API key (if you do not already have one). Next, on Windows, run the following in the CLI, replacing <yourkey> with your API key:
-
-`setx OPENAI_API_KEY <yourkey>`
-
-This will apply to future CLI windows, so you will need to open a new one to use that variable with curl. You can validate that this variable has been set by opening a new CLI window and running
-
-`echo %OPENAI_API_KEY%`
-
-Then, download [this csv file](https://cdn.openai.com/API/examples/data/winter_olympics_2022.csv) containing data on the 2022 winter Olympics
-and place it in the 'flask-server' folder. For now, our Webapp will only be able to answer questions about the 2022 Winterr Olympics.
-
-Then, navigate to the file path where the 'src' folder is and run `npm install` in the terminal. This will install the required dependencies. 
-
-Next, run `npm start`, which should open up a localhost:3000 in your browser. 
- 
-Finally, navigate to the 'flask-server' path again and run `flask --app qnatest run`. This may take a while.
-
-When this is done, ask away!
-
-## About the Project
-**What’s the problem?**
-
-We all know how ChatGPT works -- it responds to questions you may have with insightful answers. But what happens when you have questions about a customised dataset that is too specific for the general body of knowledge that GPT-3 is trained on? In other words, what if you have some burning questions about some text that ChatGPT has no idea exists? You are left with unanswered questions because even ChatGPT cannot help you.
-
-**How will our project solve this problem?**
-
-Our project aims to allow users to gain insights and meaningful answers to questions they have about specific, customised contexts. Users will input data they want OrbitAI to learn and analyse, and OrbitAI will create a customised instance of GPT ‘trained’ with the given data. It will then output the desired answers to users' questions regarding the specific given context.
-
-**Who will stand to gain from this solution?**
-
-Everyone! Educators, students, researchers, office workers...anyone who wants quick answers to their multifarious questions can turn to OrbitAI, upload a document they have questions about, and ask away!
-
-## Project Lift-Off Poster:
-Our *Poster* can be viewed at [5778.png.](https://drive.google.com/file/d/16ImxMp8x71ir37Fwxc_jQWOkwGz-SRF_/view?usp=share_link) Made using Canva.
-
-Our *Project Trailer* can be viewed at [5778.mp4.](https://drive.google.com/file/d/1Txf9ak5EnQ1CORsjyI9iwCPzuybsgJdg/view?usp=share_link)
+4. Finally, the chunks are transformed into vectors and stored in Pinecone, a vector database. The reason why transforming the text is necessary, is that in the next step, in choosing which parts of the text will most likely contain an answer to the user question, vectors allow for much faster and easier calculation of which texts to retrieve from the database. By choosing only the parts of the text relevant to the question, the amount of text the LLM needs to process is significantly reduced.
 
 
-## User Stories
-* As a professional, I can upload my reports and  use OrbitAI to proofread my reports.
- 
-* As a student, I can upload a chunk of text and ask OrbitAI to summarise this text, or ask questions about this text. For example,  I could ask OrbitAI what literary devices are being used in a piece of literature.
+**LangChain Processing**
 
-* As a researcher, I can upload research papers onto OrbitAI and get it to summarise the research papers, or provide insights on scientific concepts, or 
+LangChain is a framework for LLMs that allows us to provide it with tools, memory and context. We use Langchain in order to allow our LLM to access the vector database, of which the embeddings of the specified PDF are loaded. Based on the user query, LangChain selects the top-N most relevant embeddings that may answer the question.  These embeddings are passed to the LLM after being translated to text, and marked as context supplemented to the question. As such, the question is answered using the chunks of text provided as additional context. Finally, the output answer is returned to the user. 
 
-* As a data analyst, I can upload my data files onto OrbitAI and get it to help me analyse the given data to point out significant figures and  trends.
+**Memory**
 
-* As an event organiser, I can submit a text file with information about my event to OrbitAI. Event goers can then  ask the chatbot about the event, and OrbitAI will answer any question it can find the answer to within the provided information. 
+Memory allows the chatbot to remember the context of previous messages. This is a core component of a chatbot, as it allows for exchange of conversation rather than linear question and response forms. 
 
+The main challenge of implementing memory is a cost/effectiveness tradeoff. Memory can be stored as plaintext, and appended to the LLM with every query. This method, although retaining the full context of the entire conversation, is highly unfeasible as the token cost for sending the entire length of the conversation with every question spirals rapidly. 
 
-## Design
-Our *Class Diagram* can be viewed [here.](https://drive.google.com/file/d/1QlvFjIR3chX3KTD6zOu66jYNZG6PmbMk/view?usp=share_link)
+As a result, there are 2 main solutions to this issue: *a sliding context window and summarization*.
 
-## Features
+The first  keeps a list of the interactions of the conversation over time, but  only uses the last K interactions, to ensure the chatbot has access to recent messages, discarding the older ones. 
 
-**Proposed**
-* A File Upload field for users to upload their own files
-* An Input field for users to input questions
-* A Button that sends the user's input questions into the backend
-* A Chatbot reply style output field for users to get answers to their questions
-* Prompt buttons to streamline the context of the Chatbot
+The second uses the same LLM to summarise the conversation history, trading off a level of detail for a large reduction in tokens.  
 
-**In Progress**
+We use a combination of these methodologies with ConversationSummaryBufferMemory,  keeping a buffer of recent interactions in memory, but rather than just completely flushing old interactions it compiles them into a summary and uses both. This allows us to utilise the advantages of both while keeping costs down. 
 
-* A File Upload field for users to upload their own files
-* An Input field for users to input questions
-* A Button that sends the user's input questions into the backend
-
-Our ***Technical Proof-of-Concept*** can be found [here](https://docs.google.com/document/d/1QA0hiq3B01C-MLfwHBFUVlUo8GxjuN346ZPz-yJGT60/edit?usp=sharing).
-
-
-## Next up…
-Some features for the next phases:
-* A Chatbot reply style output field for users to get answers to their questions
-* Prompt buttons to streamline the context of the Chatbot (ie prompt engineering)
-
-## Project Flow and Timeline
-Our *Project Flow and Development Timeline* can be found [here](https://docs.google.com/document/d/1QA0hiq3B01C-MLfwHBFUVlUo8GxjuN346ZPz-yJGT60/edit?usp=sharing).
-
-## Project Log
-Our *Project Log* can be found [here](https://docs.google.com/spreadsheets/d/1d6DxgpCpcmTk8kyhEtn4Vz9rUNKAplvYz1qOrUqlTsM/edit#gid=0).
-
-## Tech-Stack
-
-For our project, we used: 
-* Python
-* Flask
-* React
-* JavaScript
-* HTML
-* CSS
-* OpenAI API
