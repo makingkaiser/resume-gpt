@@ -4,8 +4,8 @@ import "./FileAdd.css";
 import { RiFileUploadLine } from "react-icons/ri";
 import { Error, Success } from "./Messages";
 
-//axios.defaults.baseURL = 'http://localhost:5000';
-axios.defaults.baseURL = "https://convoagent.onrender.com";
+axios.defaults.baseURL = 'https://makingorbital.pythonanywhere.com';
+
 
 export default function FileAdd({ namespace }) {
   const [file, setFile] = useState(null);

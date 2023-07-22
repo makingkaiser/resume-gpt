@@ -5,8 +5,7 @@ import { Message } from "@chatscope/chat-ui-kit-react";
 import "./ChatComponent.css";
 import FileAdd from "./FileAdd";
 
-//axios.defaults.baseURL = 'http://localhost:5000';
-axios.defaults.baseURL = "https://convoagent.onrender.com";
+axios.defaults.baseURL = 'https://makingorbital.pythonanywhere.com';
 
 axios.defaults.headers.post["Content-Type"] = "application/json";
 
@@ -26,9 +25,9 @@ export default function ChatComponent({ namespace }) {
     if (namespace && prevNamespaceRef.current !== namespace) {
       axios
         .post(`/api/execute-gpt-query/${namespace}`, {
-          input: `based on the document search, generate an overview of the document as best you can in the following format:
+          input: `based on the document search, generate an overview/main points of the document as best you can in the following format:
       I believe your document is about <insert the overview here>
-      If you cannot find a document or have trouble, instead select a few interesting or main points instead to tell the user about.
+      If you cannot find a document or have trouble generating an overview, do another Document search and select a few interesting or main points instead to tell the user about.
       `,
         })
         .then((response) => {

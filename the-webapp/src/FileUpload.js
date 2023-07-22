@@ -4,8 +4,7 @@ import "./FileUpload.css";
 import { RiFileUploadLine } from "react-icons/ri";
 import { ReactComponent as ReactLogo } from "./orbit.svg";
 
-//axios.defaults.baseURL = 'http://localhost:5000';
-axios.defaults.baseURL = "https://convoagent.onrender.com";
+axios.defaults.baseURL = 'https://makingorbital.pythonanywhere.com';
 export default function FileUpload({ onNamespaceUpdate }) {
   const [file, setFile] = useState(null);
   const [namespace, setNamespace] = useState("");
@@ -155,8 +154,7 @@ export default function FileUpload({ onNamespaceUpdate }) {
   </p>
   <p style={{ fontSize: "0.7rem" }}>
           As this is a free instance developed for the CP2106 module, the backend
-          is based on a free tier and spins down after 15 minutes of activity, so
-          please allow for about 50 seconds for the database to wake from sleep.
+          is based on a free tier and may take 10-15 seconds to respond.
           Additionally, the API is self-sponsored, so we ask you not to spam our
           bot :( however feel free to try as much as you wish to!
         </p>
