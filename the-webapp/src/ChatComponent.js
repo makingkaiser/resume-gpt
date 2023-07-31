@@ -3,9 +3,8 @@ import axios from "axios";
 import "@chatscope/chat-ui-kit-styles/dist/default/styles.min.css";
 import { Message } from "@chatscope/chat-ui-kit-react";
 import "./ChatComponent.css";
-import FileAdd from "./FileAdd";
 
-axios.defaults.baseURL = 'https://makingorbital.pythonanywhere.com';
+axios.defaults.baseURL = 'http://makingkaiser.pythonanywhere.com';
 
 axios.defaults.headers.post["Content-Type"] = "application/json";
 
@@ -15,53 +14,22 @@ export default function ChatComponent({ namespace }) {
   const [messages, setMessages] = useState([
     {
       message:
-        "Hello, My name is OrbitAI! I am a chatbot that can answer questions about your document. Reading your document...",
+        "Hello! Built by Kaiser, I am capable of answering any questions you may have about him and his experience. Just try not to spam the bot as the API is paid for by me, but feel free to ask as much as you like!",
+      sender: "ChatGPT",
+    },
+    {
+      message:
+        "Kaiser is a Year 2 Data Science and Analytics student at NUS. He has a strong interest in generative LLMs and their capabilities. During his Year 1 summer break, he developed a full-stack web application called OrbitAI, which created customized chatbots that could learn new information through user-submitted files and answer questions based on what they had learned. He also has experience in multimedia design, including publicity media, shooting and editing videos. In his free time, he likes to go Rock climbing.",
       sender: "ChatGPT",
     },
   ]);
-  const prevNamespaceRef = useRef();
+  
+  const messageEndRef = useRef(null);
 
   useEffect(() => {
-    if (namespace && prevNamespaceRef.current !== namespace) {
-      axios
-        .post(`/api/execute-gpt-query/${namespace}`, {
-          input: `based on the document search, generate an overview/main points of the document as best you can in the following format:
-      I believe your document is about <insert the overview here>
-      If you cannot find a document or have trouble generating an overview, do another Document search and select a few interesting or main points instead to tell the user about.
-      `,
-        })
-        .then((response) => {
-          const message1 = {
-            message: response.data.output,
-            sender: "ChatGPT",
-          };
-          setMessages([...messages, message1]);
+    messageEndRef.current.scrollIntoView({ behavior: "smooth" });
+  }, [messages]);
 
-          axios
-            .post(`/api/execute-gpt-query/${namespace}`, {
-              input: `based on the document search, generate a list of 3-4 questions that encapsulate the main points of the document that you definitely know the answer to, in the format:
-          Here are some questions I can answer:
-          <insert questions here>
-          `,
-            })
-            .then((response) => {
-              const message2 = {
-                message: response.data.output,
-                sender: "ChatGPT",
-              };
-              setMessages([...messages, message1, message2]);
-            })
-            .catch((error) => {
-              console.error(error);
-            });
-        })
-        .catch((error) => {
-          console.error(error);
-        });
-    }
-
-    prevNamespaceRef.current = namespace;
-  }, [namespace]);
   const submitHandler = async (event) => {
     event.preventDefault();
 
@@ -105,14 +73,30 @@ export default function ChatComponent({ namespace }) {
   return (
     <div className="submit-user-query">
       <div className="container">
+
         <div className="header">
-          <h1>OrbitAI Chat</h1>
+          <h1>Kaiser's Resume</h1>
+
         </div>
-        <div className="namespace">Current namespace: {namespace}</div>
         <div className="body">
           {messages.map((message, i) => {
-            return <Message key={i} model={message} />;
+            return (
+              <div
+                key={i}
+                className={`message-container ${
+                  message.sender === "ChatGPT" ? "left" : "right"
+                } ${i === messages.length - 1 ? "last" : ""}`}
+              >
+                <Message
+                  model={message}
+                  className={`message ${
+                    i === messages.length - 1 ? "new-message" : ""
+                  }`}
+                />
+              </div>
+            );
           })}
+          <div ref={messageEndRef} />
         </div>
 
         <div className="footer">
@@ -131,7 +115,6 @@ export default function ChatComponent({ namespace }) {
               Submit
             </button>
           </form>
-          <FileAdd namespace={namespace} />
         </div>
       </div>
     </div>
