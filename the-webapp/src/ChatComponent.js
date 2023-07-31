@@ -4,7 +4,7 @@ import "@chatscope/chat-ui-kit-styles/dist/default/styles.min.css";
 import { Message } from "@chatscope/chat-ui-kit-react";
 import "./ChatComponent.css";
 
-axios.defaults.baseURL = 'http://makingkaiser.pythonanywhere.com';
+axios.defaults.baseURL = 'https://makingkaiser.pythonanywhere.com';
 //axios.defaults.baseURL = 'http://localhost:5000';
 axios.defaults.headers.post["Content-Type"] = "application/json";
 
