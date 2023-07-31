@@ -5,7 +5,7 @@ import { Message } from "@chatscope/chat-ui-kit-react";
 import "./ChatComponent.css";
 
 axios.defaults.baseURL = 'http://makingkaiser.pythonanywhere.com';
-
+//axios.defaults.baseURL = 'http://localhost:5000';
 axios.defaults.headers.post["Content-Type"] = "application/json";
 
 export default function ChatComponent({ namespace }) {
@@ -14,12 +14,12 @@ export default function ChatComponent({ namespace }) {
   const [messages, setMessages] = useState([
     {
       message:
-        "Hello! Built by Kaiser, I am capable of answering any questions you may have about him and his experience. Just try not to spam the bot as the API is paid for by me, but feel free to ask as much as you like!",
+        "Hello! Built by Kaiser, I am capable of answering any questions you may have about him and his experience. Feel free to ask as much as you like! (but please don't spam the bot because it costs money to run :P )",
       sender: "ChatGPT",
     },
     {
       message:
-        "Kaiser is a Year 2 Data Science and Analytics student at NUS. He has a strong interest in generative LLMs and their capabilities. During his Year 1 summer break, he developed a full-stack web application called OrbitAI, which created customized chatbots that could learn new information through user-submitted files and answer questions based on what they had learned. He also has experience in multimedia design, including publicity media, shooting and editing videos. In his free time, he likes to go Rock climbing.",
+        "Kaiser is a Year 2 Data Science and Analytics student at NUS. He has a strong interest in generative LLMs and their capabilities. During his Year 1 summer break, he developed a full-stack web application called OrbitAI, which created customized chatbots that could learn new information through user-submitted files and answer questions based on what they had learned. He also has experience in multimedia design, including publicity media, shooting and editing videos. In his free time, he likes to go rock climbing.",
       sender: "ChatGPT",
     },
   ]);

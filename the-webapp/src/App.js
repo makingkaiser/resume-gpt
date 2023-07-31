@@ -5,7 +5,7 @@ import FileUpload from './FileUpload';
 import ChatBox from './ChatComponent';
 
 function App() {
-  const [namespace, setNamespace] = useState(null);
+  const [namespace, setNamespace] = useState('aboutkaiser');
 
   const handleNamespaceUpdate = (newNamespace) => {
     setNamespace(newNamespace);
@@ -47,8 +47,8 @@ function App() {
 }, []);
   return (
     <div className="App">
-      {namespace && <ChatBox namespace={namespace} />}
-      {!namespace && <FileUpload onNamespaceUpdate={handleNamespaceUpdate} />}
+      {<ChatBox namespace={namespace} />}
+    
     </div>
   );
 }
